@@ -10,14 +10,14 @@ module.exports = {
   //qual o arquivo inicial da aplicação: ENTRY
   //para o sourcemap:
   devtool: isDevelopment ? 'eval-source-map' : 'source-map', //para encontrar erros no arq original, nao no arquivo do browser q é estranho
-  entry: path.resolve(__dirname, 'src', 'index.jsx'),
+  entry: path.resolve(__dirname, 'src', 'index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'] //quais extensoes ele aceitara
+    extensions: ['.js', '.jsx', '.ts', '.tsx'] //quais extensoes ele aceitara
   },
   devServer: {
     //antes era contentBase
@@ -37,7 +37,7 @@ module.exports = {
     rules: [
       //aqui boto um obj pra cada tipo de arquivo
       {
-        test: /\.jsx$/, //se termina com .jsx
+        test: /\.(j|t)sx$/, //se termina com .jsx
         exclude: /node_modules/, //mas ignore os da pasta nodemodules
         use: {
           loader: 'babel-loader', //integra babel e o webpack
