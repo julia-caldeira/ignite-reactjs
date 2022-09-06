@@ -1,6 +1,13 @@
+import { useEffect } from "react";
+import { api } from "../../services/api";
 import { Container } from "./styles";
 
 export function TransactionsTable (){
+  useEffect(() => {
+    //fetch para rota - dps substituo para api real
+    api.get('/transactions').then(data => console.log(data));
+  }, []);
+
   return (
     <Container>
       <table>
